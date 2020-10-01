@@ -31,49 +31,5 @@ public class MainActivity extends AppCompatActivity {
         },SPLASH_TIME_OUT);
 
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_mavigation);
-        bottomNavigationView.setSelectedItemId(R.id.home);
-
-        bottomNavigationView.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
-            @Override
-            public boolean onNavigationItemReselected(@NonNull MenuItem menuItem) {
-                switch(menuItem.getItemId()){
-                    case R.id.home:
-                        return true;
-
-                    case R.id.headset:
-                        startActivity(new Intent(getApplicationContext(),
-                                Headset.class));
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    case R.id.mic:
-                        startActivity(new Intent(getApplicationContext(),
-                                Mic.class));
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    case R.id.notification:
-                        startActivity(new Intent(getApplicationContext(),
-                                Notification.class));
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    case R.id.group:
-                        startActivity(new Intent(getApplicationContext(),
-                                Group.class));
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    case R.id.person:
-                        startActivity(new Intent(getApplicationContext(),
-                                Person.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                }
-                return false;
-
-            }
-        });
     }
 }
