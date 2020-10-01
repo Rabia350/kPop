@@ -2,73 +2,58 @@ package com.myfirstapplication.kpop;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity {
+public class Person extends AppCompatActivity {
 
-    private static int SPLASH_TIME_OUT = 4000;
-    ViewPager viewPager;
-    SliderAdapter sliderAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent homeIntent = new Intent(MainActivity.this, HomeActivety.class);
-                startActivity(homeIntent);
-                finish();
-            }
-        },SPLASH_TIME_OUT);
-
+        setContentView(R.layout.activity_person);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_mavigation);
-        bottomNavigationView.setSelectedItemId(R.id.home);
+        bottomNavigationView.setSelectedItemId(R.id.person);
 
         bottomNavigationView.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
             @Override
             public boolean onNavigationItemReselected(@NonNull MenuItem menuItem) {
                 switch(menuItem.getItemId()){
                     case R.id.home:
-                        return true;
-
-                    case R.id.headset:
                         startActivity(new Intent(getApplicationContext(),
-                                Headset.class));
+                                MainActivity.class));
                         overridePendingTransition(0,0);
                         return true;
 
-                    case R.id.mic:
+                    case R.id.headset:
                         startActivity(new Intent(getApplicationContext(),
                                 Mic.class));
                         overridePendingTransition(0,0);
                         return true;
 
-                    case R.id.notification:
+                    case R.id.mic:
                         startActivity(new Intent(getApplicationContext(),
                                 Notification.class));
                         overridePendingTransition(0,0);
                         return true;
 
-                    case R.id.group:
+                    case R.id.notification:
                         startActivity(new Intent(getApplicationContext(),
                                 Group.class));
                         overridePendingTransition(0,0);
                         return true;
 
-                    case R.id.person:
+                    case R.id.group:
                         startActivity(new Intent(getApplicationContext(),
                                 Person.class));
                         overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.person:
                         return true;
                 }
                 return false;

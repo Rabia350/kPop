@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomeActivety"></activity>
+        <activity android:name=".Person"></activity>
+        <activity android:name=".Group" />
+        <activity android:name=".Notification" />
+        <activity android:name=".Mic" />
+        <activity android:name=".Headset" />
+        <activity android:name=".HomeActivety" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
