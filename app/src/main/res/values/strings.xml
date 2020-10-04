@@ -1,4 +1,22 @@
 <resources>
     <string name="app_name">KPop</string>
+    <string name="title0">bottom</string>
+    <string name="title1">Music is dream</string>
+    <string name="title2">Music is meditating</string>
+    <string name="title3">Music is life</string>
+    <string name="Description">A prevailing mood or atmosphere in some aspect of your life. Ask yourself how the music or musician makes you feel while listening to it. Consider the words to the song that you are dreaming about for additional meaning.</string>
+    <string name="Description1">Meditation has the power to improve digestion, to strengthen the immune system, maintain normal cholesterol and blood pressure levels. Calming the mind, body, and spirit through meditation can help the body to rest more deeply so that it can focus on health and healing.</string>
+    <string name="Description3">Music is a form of art that uses sound organised in time. Music is also a form of entertainment that puts sounds together in a way that people like, find interesting or dance to.</string>
+    <string name="next">Next</string>
+    <string name="back">Back</string>
+    <string name="done">Done</string>
+
     <string name="home">Home</string>
+    <string name="title_shop">Shop</string>
+    <string name="title_gifts">Gifts</string>
+    <string name="title_cart">Cart</string>
+    <string name="title_profile">Profile</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

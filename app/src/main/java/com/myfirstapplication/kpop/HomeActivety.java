@@ -3,20 +3,22 @@ package com.myfirstapplication.kpop;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 public class HomeActivety extends AppCompatActivity {
 
     ViewPager viewPager;
-    SliderAdapter sliderAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_activety);
 
-        viewPager = (ViewPager)findViewById(R.id.viewpager);
-        sliderAdapter = new SliderAdapter(this);
-        viewPager.setAdapter(sliderAdapter);
-
+        viewPager = findViewById(R.id.viewPager);
+        introadapter adapter = new introadapter(getSupportFragmentManager());
+        viewPager.setAdapter(adapter);
     }
-}
+    }
+
