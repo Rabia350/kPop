@@ -19,6 +19,10 @@ public class BottomTabs extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottom_tabs);
 
+
+
+
+
         toolbar = getSupportActionBar();
         // load the store fragment by default
         assert toolbar != null;

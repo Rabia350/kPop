@@ -44,8 +44,7 @@ public class MusicIsLifeFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MusicIsLifeFragment.this,BottomTabs.class);
-                startActivity(intent);
+                startActivity(new Intent(getActivity(),BottomTabs.class));
             }
         });
         return view;
