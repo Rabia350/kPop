@@ -1,81 +1,81 @@
 package com.myfirstapplication.kpop;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.widget.FrameLayout;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.stfalcon.bottomtablayout.BottomTabLayout;
 
 public class BottomTabs extends AppCompatActivity {
 
-    private ActionBar toolbar;
+    BottomTabLayout bottomTabLayout;
+    FrameLayout container;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottom_tabs);
+        container = (FrameLayout)findViewById(R.id.container); //Container for fragments
 
-
-
-
-
-        toolbar = getSupportActionBar();
-        // load the store fragment by default
-        assert toolbar != null;
-        toolbar.setTitle("Home");
-        loadFragment(new homeFragment());
-    }
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-
-            Fragment fragment;
-            switch (menuItem.getItemId()) {
-                case R.id.home:
-                    toolbar.setTitle("Shop");
-                    fragment = new homeFragment();
-                    loadFragment(fragment);
-                    return true;
-                case R.id.headset:
-                    toolbar.setTitle("Headset");
-                    fragment = new headsetFragment();
-                    loadFragment(fragment);
-                    return true;
-                case R.id.mic:
-                    toolbar.setTitle("Mic");
-                    fragment = new micFragment();
-                    loadFragment(fragment);
-                    return true;
-                case R.id.notification:
-                    toolbar.setTitle("Notification");
-                    fragment = new notificationFragment();
-                    loadFragment(fragment);
-                    return true;
-                case R.id.person:
-                    toolbar.setTitle("Person");
-                    fragment = new personFragment();
-                    loadFragment(fragment);
-                    return true;
-                case R.id.group:
-                    toolbar.setTitle("Group");
-                    fragment = new groupFragment();
-                    loadFragment(fragment);
-                    return true;
+        //Setup button tab layout
+        bottomTabLayout = (BottomTabLayout) findViewById(R.id.bottomTabLayout);
+        //set button text style
+        bottomTabLayout.setButtonTextStyle(R.style.TabButtonTextStyle);
+        // set buttons from menu resource
+        bottomTabLayout.setItems(R.menu.navigation);
+        //set on selected tab listener.
+        bottomTabLayout.setListener(new BottomTabLayout.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(int id) {
+                switchFragment(id);
             }
-            return false;
-        }
-    };
-    private void loadFragment(Fragment fragment) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_container, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+        });
+        //set button that will be select on start activity
+        bottomTabLayout.setSelectedTab(R.id.home);
+        //enable indicator
+        bottomTabLayout.setIndicatorVisible(true);
+        //indicator height
+        bottomTabLayout.setIndicatorHeight(5);
+        //indicator color
+        bottomTabLayout.setIndicatorColor(R.color.green);
+        //indicator line color
+        bottomTabLayout.setIndicatorLineColor(R.color.dark);
     }
+    /**
+     * Show fragment in container
+     * @param id Menu item res id
+     */
+    public void switchFragment(int id) {
+        Fragment fragment = null;
+        switch (id) {
+            case R.id.home:
+                fragment = new homeFragment();
+                break;
+            case R.id.headset:
+                fragment =  new headsetFragment();
+                break;
+            case R.id.mic:
+                fragment =  new micFragment();
+                break;
+            case R.id.notification:
+                fragment =  new notificationFragment();
+                break;
+            case R.id.group:
+                fragment =  new groupFragment();
+                break;
+            case R.id.person:
+                fragment =  new personFragment();
+                break;
+        }
+        if (fragment != null) {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.container, fragment);
+            transaction.commit();
+        }
+    }
+
     }
 
