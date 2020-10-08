@@ -36,5 +36,5 @@ dependencies {
     //noinspection GradleCompatible
     implementation 'com.android.support:design:29.0.0'
     compile 'com.github.stfalcon:bottomtablayout:0.3'
-    implementation 'com.squareup.picasso:picasso:2.5.1'
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }

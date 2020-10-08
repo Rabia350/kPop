@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class CustomAdapter extends headsetFragment implements ListAdapter {
+public class CustomAdapter implements ListAdapter {
 
     ArrayList<SubjectData> arrayList;
     Context context;
@@ -73,11 +73,16 @@ public class CustomAdapter extends headsetFragment implements ListAdapter {
                 }
             });
             TextView tittle = convertView.findViewById(R.id.title);
-            ImageView imag = convertView.findViewById(R.id.list_image);
+            TextView description = convertView.findViewById(R.id.desc);
+            ImageView imag = convertView.findViewById(R.id.icon);
             tittle.setText(subjectData.SubjectName);
-           Picasso.with(context)
-                    .load(subjectData.Image)
+            description.setText(subjectData.Link);
+            Picasso.get()
+                    .load("https://picsum.photos/200")
+            .placeholder(R.drawable.bubble_circle)
+                    .error(R.drawable.bubble_circle)
                     .into(imag);
+
         }
         return convertView;
     }

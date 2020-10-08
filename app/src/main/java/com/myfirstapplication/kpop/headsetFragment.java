@@ -64,7 +64,7 @@ public class headsetFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_headset, container, false);
 
-        final ListView list = getActivity().findViewById(R.id.list);
+        final ListView list = view.findViewById(R.id.list);
         ArrayList<SubjectData> arrayList = new ArrayList<SubjectData>();
         arrayList.add(new SubjectData("Tum Hi Ana", "https://www.youtube.com/watch?v=o4t7EhH5vLs", "https://en.wikipedia.org/wiki/Tum_Hi_Aana#/media/File:Tum_Hi_Aana.jpg"));
         arrayList.add(new SubjectData("Ap Baithy hain", "https://www.youtube.com/watch?v=kxuI06hQG8k", "https://www.google.com/search?q=ap+baithy+hain+only+image&tbm=isch&ved=2ahUKEwieo_2LoaXsAhW0gHMKHWbGCskQ2-cCegQIABAA&oq=ap+baithy+hain+only+image&gs_lcp=CgNpbWcQA1CvjgVY9tkFYLvcBWgDcAB4AIAB-wSIAagfkgEJMi05LjIuMC4ymAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=Iyl_X96FNLSBzgPmjKvIDA&bih=657&biw=1366&rlz=1C1EJFA_enPK797PK806#imgrc=jicocGfU8PMwcM"));
