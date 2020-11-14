@@ -63,9 +63,6 @@ public class BottomTabs extends AppCompatActivity {
             case R.id.notification:
                 fragment =  new notificationFragment();
                 break;
-            case R.id.group:
-                fragment =  new groupFragment();
-                break;
             case R.id.person:
                 fragment =  new personFragment();
                 break;
