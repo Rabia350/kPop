@@ -30,7 +30,7 @@ import java.io.IOException;
  * Use the {@link AudioListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AudioListFragment extends Fragment implements VoiceListAdapter.onItemListClick{
+public class AudioListFragment extends Fragment implements VoiceListAdapter.onItemListClick {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -54,6 +54,7 @@ public class AudioListFragment extends Fragment implements VoiceListAdapter.onIt
     private SeekBar playerSeekbar;
     private Handler seekbarHandler;
     private Runnable updateSeekbar;
+
     public AudioListFragment() {
         // Required empty public constructor
     }
@@ -180,8 +181,6 @@ public class AudioListFragment extends Fragment implements VoiceListAdapter.onIt
         else {
 
             playAudio(fileToPlay);
-
-
         }
     }
 

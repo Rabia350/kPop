@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class VoiceListAdapter extends RecyclerView.Adapter<VoiceListAdapter.AudioViewHolder> {
-
     private File[] allFiles;
     private TimeAgo timeago;
     private onItemListClick onItemListClick;
@@ -33,6 +32,7 @@ public class VoiceListAdapter extends RecyclerView.Adapter<VoiceListAdapter.Audi
     public void onBindViewHolder(@NonNull VoiceListAdapter.AudioViewHolder holder, int position) {
         holder.list_title.setText(allFiles[position].getName());
         holder.list_date.setText(timeago.getTimeAgo(allFiles[position].lastModified()));
+
     }
 
     @Override
