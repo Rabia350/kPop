@@ -98,6 +98,7 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
                 startActivity(new Intent(getActivity(),CreateYourOwnMusic.class));
             }
         });
+        checkpermissions();
         return view;
     }
     public void onViewCreated(View view, Bundle savedInstanceState) {
