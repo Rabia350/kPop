@@ -17,6 +17,6 @@
         android:layout_width="match_parent"
         android:layout_height="58dp"
         android:layout_alignParentBottom="true"
-        android:background="@color/dark" />
+        android:background="@color/cardview_light_background" />
 
 </RelativeLayout>

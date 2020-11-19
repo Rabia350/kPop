@@ -8,13 +8,13 @@ import android.view.View;
 
 public class CreateYourOwnMusic extends AppCompatActivity {
 
-    MediaPlayer kick,snare,hats,claps;
+    MediaPlayer kick,snare,hats,water;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_your_own_music);
         kick=MediaPlayer.create(CreateYourOwnMusic.this,R.raw.kick);
-        claps=MediaPlayer.create(CreateYourOwnMusic.this,R.raw.clap);
+        water=MediaPlayer.create(CreateYourOwnMusic.this,R.raw.water);
         snare=MediaPlayer.create(CreateYourOwnMusic.this,R.raw.snare);
         hats=MediaPlayer.create(CreateYourOwnMusic.this,R.raw.hats);
 
@@ -27,9 +27,9 @@ public class CreateYourOwnMusic extends AppCompatActivity {
     {
         snare.start();
     }
-    public void playClap(View view)
+    public void playWater(View view)
     {
-        claps.start();
+        water.start();
     }
     public void palyKick(View view)
     {
