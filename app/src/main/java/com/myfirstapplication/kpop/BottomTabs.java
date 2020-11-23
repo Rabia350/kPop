@@ -34,15 +34,15 @@ public class BottomTabs extends AppCompatActivity {
             }
         });
         //set button that will be select on start activity
-        bottomTabLayout.setSelectedTab(R.id.home);
+        bottomTabLayout.setSelectedTab(R.id.headset);
         //enable indicator
-        bottomTabLayout.setIndicatorVisible(true);
+        bottomTabLayout.setIndicatorVisible(false);
         //indicator height
-        bottomTabLayout.setIndicatorHeight(5);
+//        bottomTabLayout.setIndicatorHeight(5);
         //indicator color
-        bottomTabLayout.setIndicatorColor(R.color.green);
+//        bottomTabLayout.setIndicatorColor(R.color.green);
         //indicator line color
-        bottomTabLayout.setIndicatorLineColor(R.color.dark);
+//        bottomTabLayout.setIndicatorLineColor(R.color.dark);
     }
     /**
      * Show fragment in container
@@ -51,9 +51,9 @@ public class BottomTabs extends AppCompatActivity {
     public void switchFragment(int id) {
         Fragment fragment = null;
         switch (id) {
-            case R.id.home:
-                fragment = new homeFragment();
-                break;
+//            case R.id.home:
+//                fragment = new homeFragment();
+//                break;
             case R.id.headset:
                 fragment =  new headsetFragment();
                 break;

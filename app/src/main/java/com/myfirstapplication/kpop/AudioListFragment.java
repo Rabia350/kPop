@@ -107,7 +107,7 @@ public class AudioListFragment extends Fragment implements VoiceListAdapter.onIt
         File directory = new File(path);
         allfiles = directory.listFiles();
 
-        AudioListAdapter = new VoiceListAdapter(allfiles,this);
+        AudioListAdapter = new VoiceListAdapter(allfiles,this,getActivity());
 
         audiolist.setHasFixedSize(true);
         audiolist.setLayoutManager(new LinearLayoutManager(getContext()));

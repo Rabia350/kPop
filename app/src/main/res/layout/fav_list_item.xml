@@ -52,17 +52,4 @@
         app:layout_constraintTop_toBottomOf="@+id/list_title"
         app:layout_constraintVertical_bias="1.0" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="Mark as Favorite"
-        android:id="@+id/save"
-        android:textColor="#FFF"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.248"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_date" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -114,11 +114,11 @@ class ListFragment extends Fragment implements audioListAdapter.onItemListClick{
         File directory = new File(path);
         allfiles = directory.listFiles();
 
-        AudioListAdapter = new audioListAdapter(allfiles,this);
-
-        audiolist.setHasFixedSize(true);
-        audiolist.setLayoutManager(new LinearLayoutManager(getContext()));
-        audiolist.setAdapter(AudioListAdapter);
+//        AudioListAdapter = new audioListAdapter(allfiles,this);
+//
+//        audiolist.setHasFixedSize(true);
+//        audiolist.setLayoutManager(new LinearLayoutManager(getContext()));
+//        audiolist.setAdapter(AudioListAdapter);
 
 
 

@@ -16,9 +16,8 @@ import android.widget.Toast;
 
 public class MusicIsLifeFragment extends Fragment {
 
-    TextView back;
+    TextView back,button;
     ViewPager viewPager;
-    private Button button;
     public MusicIsLifeFragment() {
         // Required empty public constructor
     }

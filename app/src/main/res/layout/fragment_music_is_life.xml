@@ -54,13 +54,14 @@
             />
 
 
-        <Button
+        <TextView
             android:id="@+id/btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|start"
             android:textSize="20sp"
             android:text="Next"
+            android:textColor="#FFF"
             android:clickable="true"
             android:focusable="true"/>
 

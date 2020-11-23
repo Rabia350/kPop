@@ -11,12 +11,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class audioListAdapter extends RecyclerView.Adapter<audioListAdapter.AudioViewHolder> {
-    private File[] allFiles;
+    private ArrayList<File> allFiles;
     private TimeAgo timeago;
     private onItemListClick onItemListClick;
-    public audioListAdapter(File[] allFiles ,onItemListClick onItemListClick){
+    public audioListAdapter(ArrayList<File> allFiles ,onItemListClick onItemListClick){
         this.allFiles = allFiles;
         this.onItemListClick =onItemListClick;
 
@@ -24,21 +25,21 @@ public class audioListAdapter extends RecyclerView.Adapter<audioListAdapter.Audi
     @NonNull
     @Override
     public AudioViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_list_item,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fav_list_item,parent,false);
         timeago= new TimeAgo();
         return new AudioViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull AudioViewHolder holder, int position) {
-        holder.list_title.setText(allFiles[position].getName());
-        holder.list_date.setText(timeago.getTimeAgo(allFiles[position].lastModified()));
+        holder.list_title.setText(allFiles.get(position).getName());
+        holder.list_date.setText(timeago.getTimeAgo(allFiles.get(position).lastModified()));
 
     }
 
     @Override
     public int getItemCount() {
-        return allFiles.length ;
+        return allFiles.size();
 
     }
 
@@ -59,7 +60,7 @@ public class audioListAdapter extends RecyclerView.Adapter<audioListAdapter.Audi
 
         @Override
         public void onClick(View v) {
-            onItemListClick.onclickListner(allFiles[getAdapterPosition()] ,getAdapterPosition());
+            onItemListClick.onclickListner(allFiles.get(getAdapterPosition()) ,getAdapterPosition());
         }
     }
     public interface onItemListClick{
