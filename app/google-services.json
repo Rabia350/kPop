@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "982704241991",
+    "project_id": "kpop-76506",
+    "storage_bucket": "kpop-76506.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:982704241991:android:fd8204849d127b9408a062",
+        "android_client_info": {
+          "package_name": "com.myfirstapplication.kpop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "982704241991-7l8ibhcg2dggkjfihur5ejkc7ofvov3b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBErTBAe6ar_Kl98RRpzGwhWBAH9wl4mQg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "982704241991-7l8ibhcg2dggkjfihur5ejkc7ofvov3b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
