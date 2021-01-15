@@ -138,7 +138,15 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     dialog.dismiss();
 
-                    checkIfEmailVerified();
+                    Email.getText().clear();
+
+                    Password.getText().clear();
+                    Intent intent = new Intent(LoginActivity.this, HomeActivety.class);
+
+                    // Sending Email to Dashboard Activity using intent.
+                    intent.putExtra(userEmail,email);
+
+                    startActivity(intent);
 
                 }
             }
