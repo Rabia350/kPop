@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class personFragment extends Fragment {
 
     Button LogOUT ;
+    private Button btn;
     FirebaseAuth mAuth;
     FirebaseAuth.AuthStateListener mAuthListner;
     FirebaseUser mUser;
@@ -30,6 +31,13 @@ public class personFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_person, container, false);
         LogOUT = (Button) view.findViewById(R.id.button1);
+        btn = view.findViewById(R.id.button2);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(),ChatActivity.class));
+            }
+        });
 
         getActivity().getIntent();
         LogOUT.setOnClickListener(new View.OnClickListener() {

@@ -11,6 +11,7 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -19,6 +20,13 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            res {
+                srcDirs 'src\\main\\res', 'src\\main\\res\\w820dp'
+            }
         }
     }
 
@@ -56,6 +64,17 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment:$nav_version"
     //noinspection GradleDependency
     implementation "androidx.navigation:navigation-ui:$nav_version"
+
+
+    //For chat
+    implementation 'com.firebaseui:firebase-ui:6.2.1'
+    implementation 'com.github.hani-momanii:SuperNova-Emoji:1.1'
+    implementation 'com.github.lguipeng:BubbleView:1.0.1'
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
 
 }
 apply plugin: 'com.google.gms.google-services'

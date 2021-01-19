@@ -1,82 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
+    android:padding="10dp"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".CreateYourOwnMusic">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:background="@drawable/blue_button"
+            android:onClick="playsound1"
+            android:layout_width="70dp"
+            android:layout_height="70dp" />
+        <Button
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/blue_button"
+            android:onClick="playsound2"
+            android:layout_width="70dp"
+            android:layout_height="70dp" />
+        <Button
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/blue_button"
+            android:onClick="playsound3"
+            android:layout_width="70dp"
+            android:layout_height="70dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:background="@drawable/purple_button"
+            android:onClick="playsound4"
+            android:layout_width="70dp"
+            android:layout_height="70dp" />
+        <Button
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/orange_button"
+            android:onClick="playsound5"
+            android:layout_width="70dp"
+            android:layout_height="70dp" />
+        <Button
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/pink_button"
+            android:onClick="playsound6"
+            android:layout_width="70dp"
+            android:layout_height="70dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:background="@drawable/green_button"
+            android:onClick="playsound7"
+            android:layout_width="70dp"
+            android:layout_height="70dp" />
+        <Button
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/green_button"
+            android:onClick="playsound8"
+            android:layout_width="70dp"
+            android:layout_height="70dp" />
+        <Button
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/pink_button"
+            android:onClick="playsound9"
+            android:layout_width="70dp"
+            android:layout_height="70dp" />
+
+
+    </LinearLayout>
 
     <fragment
         android:id="@+id/fragment_container"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_marginTop="360dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="300dp"
         app:navGraph="@navigation/nav_graph"
         app:defaultNavHost="true"
         />
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="26dp"
-        android:layout_marginRight="26dp"
-        android:layout_marginBottom="23dp"
-        android:onClick="playHats"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton4"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hats" />
 
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="23dp"
-        android:onClick="playSnare"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageButton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/snare" />
 
-    <ImageButton
-        android:id="@+id/imageButton4"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginBottom="400dp"
-        android:onClick="palyKick"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton"
-        app:srcCompat="@drawable/kick" />
-
-    <ImageButton
-        android:id="@+id/imageButton5"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="400dp"
-        android:onClick="playWater"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageButton4"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton2"
-        app:srcCompat="@drawable/water" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

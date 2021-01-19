@@ -1,0 +1,172 @@
+package com.myfirstapplication.kpop;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
+import androidx.annotation.NonNull;
+
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import android.os.Bundle;
+
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.text.format.DateFormat;
+
+import com.firebase.ui.auth.AuthUI;
+import com.firebase.ui.database.FirebaseListAdapter;
+import com.github.library.bubbleview.BubbleTextView;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+
+import hani.momanii.supernova_emoji_library.Actions.EmojIconActions;
+import hani.momanii.supernova_emoji_library.Helper.EmojiconEditText;
+
+public class ChatActivity extends AppCompatActivity {
+
+
+    private static int SIGN_IN_REQUEST_CODE = 1;
+    private FirebaseRecyclerAdapter<ChatMessage,ChatViewHolder> adapter;
+    RelativeLayout activity_main;
+
+    //Add Emojicon
+    EmojiconEditText emojiconEditText;
+    ImageView emojiButton,submitButton;
+    EmojIconActions emojIconActions;
+
+    RecyclerView listOfMessage;
+    Query query;
+    FirebaseRecyclerOptions<ChatMessage> options;
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.menu_sign_out)
+        {
+            AuthUI.getInstance().signOut(this).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    Snackbar.make(activity_main,"You have been signed out.", Snackbar.LENGTH_SHORT).show();
+                    finish();
+                }
+            });
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu,menu);
+        return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == SIGN_IN_REQUEST_CODE)
+        {
+            if(resultCode == RESULT_OK)
+            {
+                Snackbar.make(activity_main,"Successfully signed in.Welcome!", Snackbar.LENGTH_SHORT).show();
+                displayChatMessage();
+            }
+            else{
+                Snackbar.make(activity_main,"We couldn't sign you in.Please try again later", Snackbar.LENGTH_SHORT).show();
+                finish();
+            }
+        }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_chat);
+
+        activity_main = (RelativeLayout)findViewById(R.id.activity_main);
+        listOfMessage = (RecyclerView) findViewById(R.id.list_of_message);
+        listOfMessage.setLayoutManager(new LinearLayoutManager(this));
+
+        query = FirebaseDatabase.getInstance().getReference();
+        options = new FirebaseRecyclerOptions.Builder<ChatMessage>()
+                .setQuery(query,ChatMessage.class)
+                .build();
+        //Add Emoji
+        emojiButton = (ImageView)findViewById(R.id.emoji_button);
+        submitButton = (ImageView)findViewById(R.id.submit_button);
+        emojiconEditText = (EmojiconEditText)findViewById(R.id.emojicon_edit_text);
+        emojIconActions = new EmojIconActions(getApplicationContext(),activity_main, emojiconEditText, emojiButton);
+        emojIconActions.ShowEmojIcon();
+
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseDatabase.getInstance().getReference().push().setValue(new ChatMessage(emojiconEditText.getText().toString(),
+                        FirebaseAuth.getInstance().getCurrentUser().getEmail()));
+                emojiconEditText.setText("");
+                emojiconEditText.requestFocus();
+            }
+        });
+
+        //Check if not sign-in then navigate Signin page
+        if(FirebaseAuth.getInstance().getCurrentUser() == null)
+        {
+            startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().build(),SIGN_IN_REQUEST_CODE);
+        }
+        else
+        {
+            Snackbar.make(activity_main,"Welcome "+FirebaseAuth.getInstance().getCurrentUser().getEmail(),Snackbar.LENGTH_SHORT).show();
+            //Load content
+            displayChatMessage();
+        }
+
+
+    }
+
+
+
+    private void displayChatMessage() {
+
+
+        adapter = new FirebaseRecyclerAdapter<ChatMessage, ChatViewHolder>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull ChatViewHolder holder, int position, @NonNull ChatMessage model) {
+                holder.messageText.setText(model.getMessageText());
+                holder.messageUser.setText(model.getMessageUser());
+                holder.messageTime.setText(DateFormat.format("dd-MM-yyyy (HH:mm:ss)", model.getMessageTime()));
+
+            }
+
+            @NonNull
+            @Override
+            public ChatViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+                return new ChatViewHolder(LayoutInflater.from(ChatActivity.this)
+                        .inflate(R.layout.chat_list_item,viewGroup,false));
+            }
+        };
+
+
+        listOfMessage.setAdapter(adapter);
+    }
+
+    private class ChatViewHolder extends RecyclerView.ViewHolder {
+        TextView messageText, messageUser, messageTime;
+
+        public ChatViewHolder(@NonNull View itemView) {
+            super(itemView);
+            messageText = (BubbleTextView) itemView.findViewById(R.id.message_text);
+            messageUser = (TextView) itemView.findViewById(R.id.message_user);
+            messageTime = (TextView) itemView.findViewById(R.id.message_time);
+        }
+    }
+}
