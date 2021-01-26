@@ -30,6 +30,9 @@ public class headsetFragment extends Fragment {
 
     FrameLayout simpleFrameLayout;
     TabLayout tabLayout;
+    private ArrayList<Music> arrayList;
+    private CustomMusicAdapter adapter;
+    private ListView songList;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -70,6 +73,23 @@ public class headsetFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_headset, container, false);
+
+        songList = view.findViewById(R.id.songList);
+        arrayList = new ArrayList<>();
+        arrayList.add(new Music("Jab koi bat", "Atif Aslam", R.raw.jab));
+        arrayList.add(new Music("Ap baithy hain", "Zamad Baig", R.raw.ap));
+        arrayList.add(new Music("Baari", "Bilal Saeed & Momina Mustehsan", R.raw.baari));
+        arrayList.add(new Music("Har Zulm Tera Yaad Hy", "Sajjad Ali", R.raw.harzulm));
+        arrayList.add(new Music("Laila O Laila", "Ali Zafar & Urooj Fatima", R.raw.lailaolaila));
+        arrayList.add(new Music("Tajdar e Haram", "Atif Aslam", R.raw.tajdareharam));
+        arrayList.add(new Music("Pyar bhare do sharmile nain", "Mehdi Hassan", R.raw.pyarbare));
+        arrayList.add(new Music("Akele Na Jana", "Ahmed Rushdi", R.raw.akelenajana));
+        arrayList.add(new Music("Afreen Afreen", "rahat & Momina Mustehsan", R.raw.afreen));
+
+
+        adapter = new CustomMusicAdapter(getActivity(), R.layout.custom_music_item, arrayList);
+        songList.setAdapter(adapter);
+
         // get the reference of FrameLayout and TabLayout
         simpleFrameLayout = (FrameLayout) view.findViewById(R.id.simpleFrameLayout);
         tabLayout = (TabLayout) view.findViewById(R.id.simpleTabLayout);

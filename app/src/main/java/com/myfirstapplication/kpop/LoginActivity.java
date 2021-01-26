@@ -6,10 +6,15 @@ import android.content.Intent;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,155 +29,99 @@ import androidx.annotation.Nullable;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText Email, Password;
-    Button LogInButton, RegisterButton;
+    EditText emailEt,passEt;
+    Button register_btn,login_btn;
+    CheckBox checkBox;
+    ProgressBar progressBar;
     FirebaseAuth mAuth;
-    FirebaseAuth.AuthStateListener mAuthListner;
-    FirebaseUser mUser;
-    String email, password;
-    ProgressDialog dialog;
-    public static final String userEmail="";
 
-    public static final String TAG="LOGIN";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        LogInButton = (Button) findViewById(R.id.buttonLogin);
-
-        RegisterButton = (Button) findViewById(R.id.buttonRegister);
-
-        Email = (EditText) findViewById(R.id.editEmail);
-        Password = (EditText) findViewById(R.id.editPassword);
-        dialog = new ProgressDialog(this);
+        emailEt = findViewById(R.id.login_email_et);
+        passEt = findViewById(R.id.login_password_et);
+        register_btn = findViewById(R.id.login_to_signup);
+        login_btn = findViewById(R.id.button_login);
+        checkBox = findViewById(R.id.login_checkbox);
+        progressBar = findViewById(R.id.progressbar_login);
         mAuth = FirebaseAuth.getInstance();
-        mUser = FirebaseAuth.getInstance().getCurrentUser();
-        mAuthListner = new FirebaseAuth.AuthStateListener() {
+
+
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if (mUser != null) {
-                    Intent intent = new Intent(LoginActivity.this, HomeActivety.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+
+                if (b){
+                    passEt.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    //    confirm_pass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }else {
+
+                    passEt.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    //  confirm_pass.setTransformationMethod(PasswordTransformationMethod.getInstance());
                 }
-                else
-                {
-                    Log.d(TAG,"AuthStateChanged:Logout");
-                }
-
-            }
-        };
-        // LogInButton.setOnClickListener((View.OnClickListener) this);
-        //RegisterButton.setOnClickListener((View.OnClickListener) this);
-        //Adding click listener to log in button.
-        LogInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                // Calling EditText is empty or no method.
-                userSign();
-
-
             }
         });
 
-        // Adding click listener to register button.
-        RegisterButton.setOnClickListener(new View.OnClickListener() {
+
+        register_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                // Opening new user registration activity using intent on button click.
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        login_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String email = emailEt.getText().toString();
+                String pass = passEt.getText().toString();
+                if (!TextUtils.isEmpty(email) || !TextUtils.isEmpty(pass)){
+                    progressBar.setVisibility(View.VISIBLE);
+                    mAuth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+
+                            if (task.isSuccessful()){
+                                sendtoMain();
+                            }else {
+                                String error = task.getException().getMessage();
+                                Toast.makeText(LoginActivity.this, "Error :"+error, Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+
+
+                }else {
+                    Toast.makeText(LoginActivity.this, "please fill all fields", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
+
+
+
 
     }
+
+    private void sendtoMain() {
+        Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
 
     @Override
     protected void onStart() {
         super.onStart();
-        //removeAuthSateListner is used  in onStart function just for checking purposes,it helps in logging you out.
-        mAuth.removeAuthStateListener(mAuthListner);
 
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        if (mAuthListner != null) {
-            mAuth.removeAuthStateListener(mAuthListner);
-        }
-
-    }
-
-    @Override
-    public void onBackPressed() {
-        LoginActivity.super.finish();
-    }
-
-
-
-    private void userSign() {
-        email = Email.getText().toString().trim();
-        password = Password.getText().toString().trim();
-        if (TextUtils.isEmpty(email)) {
-            Toast.makeText(LoginActivity.this, "Enter the correct Email", Toast.LENGTH_SHORT).show();
-            return;
-        } else if (TextUtils.isEmpty(password)) {
-            Toast.makeText(LoginActivity.this, "Enter the correct password", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        dialog.setMessage("Loging in please wait...");
-        dialog.setIndeterminate(true);
-        dialog.show();
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (!task.isSuccessful()) {
-                    dialog.dismiss();
-
-                    Toast.makeText(LoginActivity.this, "Login not successfull", Toast.LENGTH_SHORT).show();
-
-                } else {
-                    dialog.dismiss();
-
-                    Email.getText().clear();
-
-                    Password.getText().clear();
-                    Intent intent = new Intent(LoginActivity.this, HomeActivety.class);
-
-                    // Sending Email to Dashboard Activity using intent.
-                    intent.putExtra(userEmail,email);
-
-                    startActivity(intent);
-
-                }
-            }
-        });
-
-    }
-    //This function helps in verifying whether the email is verified or not.
-    private void checkIfEmailVerified(){
-        FirebaseUser users=FirebaseAuth.getInstance().getCurrentUser();
-        boolean emailVerified=users.isEmailVerified();
-        if(!emailVerified){
-            Toast.makeText(this,"Verify the Email Id",Toast.LENGTH_SHORT).show();
-            mAuth.signOut();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user!= null){
+            Intent intent = new Intent(LoginActivity.this,HomeActivety.class);
+            startActivity(intent);
             finish();
         }
-        else {
-            Email.getText().clear();
 
-            Password.getText().clear();
-            Intent intent = new Intent(LoginActivity.this, HomeActivety.class);
-
-            // Sending Email to Dashboard Activity using intent.
-            intent.putExtra(userEmail,email);
-
-            startActivity(intent);
-
-        }
     }
 }

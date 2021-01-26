@@ -19,7 +19,32 @@
     <FrameLayout
         android:id="@+id/simpleFrameLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width = "match_parent"
+            android:background="@drawable/bg"
+            android:layout_height = "match_parent"
+            android:orientation = "vertical">
+            <ListView
+                android:id = "@+id/songList"
+                android:layout_width = "wrap_content"
+                android:layout_height = "300dp"
+                android:divider = "#000"
+                android:dividerHeight = "1dp"
+                android:footerDividersEnabled = "false"
+                android:headerDividersEnabled = "false"/>
+            <fragment
+                android:id="@+id/fragment_container"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:navGraph="@navigation/nav_graph"
+                app:defaultNavHost="true"
+                />
+
+
+        </LinearLayout>
+    </FrameLayout>
 
 
     </LinearLayout>
