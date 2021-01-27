@@ -36,7 +36,7 @@ public class personFragment extends Fragment implements View.OnClickListener{
     ImageButton imageButtonEdit,imageButtonMenu;
     DocumentReference reference;
     FirebaseFirestore firestore;
-    private Button btn;
+    private Button btn,logout;
     String url;
     @Nullable
     @Override
@@ -45,10 +45,18 @@ public class personFragment extends Fragment implements View.OnClickListener{
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_person, container, false);
         btn = view.findViewById(R.id.button2);
+        logout = view.findViewById(R.id.logout);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getActivity(),ChatActivity.class));
+            }
+        });
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getActivity(),LoginActivity.class));
             }
         });
         return view;
@@ -141,9 +149,6 @@ public class personFragment extends Fragment implements View.OnClickListener{
                             profEt.setText(profResult);
 
 
-                        }else {
-                            Intent intent = new Intent(getActivity(),CreateProfile.class);
-                            startActivity(intent);
                         }
                     }
                 });
