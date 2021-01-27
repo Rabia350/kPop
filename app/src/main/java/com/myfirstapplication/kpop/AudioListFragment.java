@@ -1,6 +1,8 @@
 package com.myfirstapplication.kpop;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
@@ -43,7 +45,6 @@ public class AudioListFragment extends Fragment implements VoiceListAdapter.onIt
     private ConstraintLayout playersheet;
     private BottomSheetBehavior bottomsheetbehaviour;
     private RecyclerView audiolist;
-    private File[] allfiles;
     private VoiceListAdapter AudioListAdapter;
     private MediaPlayer mediaPlayer= null;
     private Boolean isPlaying=false;
@@ -105,15 +106,8 @@ public class AudioListFragment extends Fragment implements VoiceListAdapter.onIt
 
         String path = getActivity().getExternalFilesDir("/").getAbsolutePath();
         File directory = new File(path);
-        allfiles = directory.listFiles();
-
-        AudioListAdapter = new VoiceListAdapter(allfiles,this,getActivity());
-
-        audiolist.setHasFixedSize(true);
-        audiolist.setLayoutManager(new LinearLayoutManager(getContext()));
-        audiolist.setAdapter(AudioListAdapter);
-
-
+        File[] allfiles = directory.listFiles();
+        populateList(allfiles, audiolist);
 
         bottomsheetbehaviour = BottomSheetBehavior.from(playersheet);
 
@@ -167,7 +161,25 @@ public class AudioListFragment extends Fragment implements VoiceListAdapter.onIt
             }
         });
     }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof Activity){
+            VoiceListAdapter.myContext=(Activity) context;
+        }
 
+    }
+    public void populateList(File[] allfiles, RecyclerView audiolist){
+//        String path = context.getExternalFilesDir("/").getAbsolutePath();
+//        File directory = new File(path);
+//        File[] allfiles = directory.listFiles();
+
+        AudioListAdapter = new VoiceListAdapter(allfiles,this,getActivity(), AudioListFragment.this, audiolist);
+
+        audiolist.setHasFixedSize(true);
+        audiolist.setLayoutManager(new LinearLayoutManager(getContext()));
+        audiolist.setAdapter(AudioListAdapter);
+    }
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)

@@ -44,6 +44,7 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
     private NavController navcontroller;
     private ImageButton listBtn;
     private ImageButton recordBtn;
+    int songID;
     private boolean isrecording = false;
     private String recordPermission = Manifest.permission.RECORD_AUDIO;
     private MediaRecorder mediarecorder;
@@ -91,6 +92,9 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_record, container, false);
+        if (getArguments()!=null){
+            songID = getArguments().getInt("songID");
+        }
         button = view.findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
