@@ -6,8 +6,10 @@ import androidx.annotation.NonNull;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
@@ -38,135 +40,41 @@ import hani.momanii.supernova_emoji_library.Helper.EmojiconEditText;
 public class ChatActivity extends AppCompatActivity {
 
 
-    private static int SIGN_IN_REQUEST_CODE = 1;
-    private FirebaseRecyclerAdapter<ChatMessage,ChatViewHolder> adapter;
-    RelativeLayout activity_main;
-
-    //Add Emojicon
-    EmojiconEditText emojiconEditText;
-    ImageView emojiButton,submitButton;
-    EmojIconActions emojIconActions;
-
-    RecyclerView listOfMessage;
-    Query query;
-    FirebaseRecyclerOptions<ChatMessage> options;
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == R.id.menu_sign_out)
-        {
-            AuthUI.getInstance().signOut(this).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    Snackbar.make(activity_main,"You have been signed out.", Snackbar.LENGTH_SHORT).show();
-                    finish();
-                }
-            });
-        }
-        return true;
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu,menu);
-        return true;
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == SIGN_IN_REQUEST_CODE)
-        {
-            if(resultCode == RESULT_OK)
-            {
-                Snackbar.make(activity_main,"Successfully signed in.Welcome!", Snackbar.LENGTH_SHORT).show();
-                displayChatMessage();
-            }
-            else{
-                Snackbar.make(activity_main,"We couldn't sign you in.Please try again later", Snackbar.LENGTH_SHORT).show();
-                finish();
-            }
-        }
-    }
-
+    FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
-        activity_main = (RelativeLayout)findViewById(R.id.activity_main);
-        listOfMessage = (RecyclerView) findViewById(R.id.list_of_message);
-        listOfMessage.setLayoutManager(new LinearLayoutManager(this));
+        auth = FirebaseAuth.getInstance();
 
-        query = FirebaseDatabase.getInstance().getReference();
-        options = new FirebaseRecyclerOptions.Builder<ChatMessage>()
-                .setQuery(query,ChatMessage.class)
-                .build();
-        //Add Emoji
-        emojiButton = (ImageView)findViewById(R.id.emoji_button);
-        submitButton = (ImageView)findViewById(R.id.submit_button);
-        emojiconEditText = (EmojiconEditText)findViewById(R.id.emojicon_edit_text);
-        emojIconActions = new EmojIconActions(getApplicationContext(),activity_main, emojiconEditText, emojiButton);
-        emojIconActions.ShowEmojIcon();
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
+        bottomNavigationView.setOnNavigationItemSelectedListener(onNav);
 
-        submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseDatabase.getInstance().getReference().push().setValue(new ChatMessage(emojiconEditText.getText().toString(),
-                        FirebaseAuth.getInstance().getCurrentUser().getEmail()));
-                emojiconEditText.setText("");
-                emojiconEditText.requestFocus();
-            }
-        });
-
-        //Check if not sign-in then navigate Signin page
-        if(FirebaseAuth.getInstance().getCurrentUser() == null)
-        {
-            startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().build(),SIGN_IN_REQUEST_CODE);
-        }
-        else
-        {
-            Snackbar.make(activity_main,"Welcome "+FirebaseAuth.getInstance().getCurrentUser().getEmail(),Snackbar.LENGTH_SHORT).show();
-            //Load content
-            displayChatMessage();
-        }
-
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,
+                new Fragment2()).commit();
 
     }
 
+    private BottomNavigationView.OnNavigationItemSelectedListener onNav = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
+            Fragment selected = null;
+            switch (item.getItemId()){
 
-    private void displayChatMessage() {
-
-
-        adapter = new FirebaseRecyclerAdapter<ChatMessage, ChatViewHolder>(options) {
-            @Override
-            protected void onBindViewHolder(@NonNull ChatViewHolder holder, int position, @NonNull ChatMessage model) {
-                holder.messageText.setText(model.getMessageText());
-                holder.messageUser.setText(model.getMessageUser());
-                holder.messageTime.setText(DateFormat.format("dd-MM-yyyy (HH:mm:ss)", model.getMessageTime()));
+                case R.id.ask_bottom:
+                    selected = new Fragment2();
+                    break;
 
             }
 
-            @NonNull
-            @Override
-            public ChatViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-                return new ChatViewHolder(LayoutInflater.from(ChatActivity.this)
-                        .inflate(R.layout.chat_list_item,viewGroup,false));
-            }
-        };
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,
+                    selected).commit();
 
 
-        listOfMessage.setAdapter(adapter);
-    }
+            return true;
 
-    private class ChatViewHolder extends RecyclerView.ViewHolder {
-        TextView messageText, messageUser, messageTime;
-
-        public ChatViewHolder(@NonNull View itemView) {
-            super(itemView);
-            messageText = (BubbleTextView) itemView.findViewById(R.id.message_text);
-            messageUser = (TextView) itemView.findViewById(R.id.message_user);
-            messageTime = (TextView) itemView.findViewById(R.id.message_time);
         }
-    }
+    };
 }

@@ -12,47 +12,22 @@
     tools:context=".ChatActivity">
 
 
-    <ImageView
-        android:id="@+id/emoji_button"
-        android:padding="4dp"
-        android:src="@mipmap/smiley"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_width="40dp"
-        android:layout_height="40dp" />
-
-    <ImageView
-        android:id="@+id/submit_button"
-        android:padding="4dp"
-        android:src="@android:drawable/ic_menu_send"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_width="40dp"
-        android:layout_height="40dp" />
-
-
-    <hani.momanii.supernova_emoji_library.Helper.EmojiconEditText
-        android:id="@+id/emojicon_edit_text"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/emoji_button"
-        android:layout_toLeftOf="@+id/submit_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:emojiconSize="28sp"
-        />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_of_message"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_above="@+id/emojicon_edit_text"
-        android:dividerHeight="16dp"
-        android:divider="@android:color/transparent"
-        android:layout_marginBottom="16dp"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:stackFromBottom="true"
-        android:transcriptMode="alwaysScroll"
-        android:layout_alignParentLeft="true" />
+        android:id="@+id/frame_layout"
+        android:layout_above="@+id/bottom_nav"></FrameLayout>
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottom_nav"
+        app:itemTextColor="@android:color/black"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        android:focusableInTouchMode="true"
+        app:itemIconTint="@android:color/black"
+        app:menu="@menu/bottom_menu" />
 
 </RelativeLayout>
