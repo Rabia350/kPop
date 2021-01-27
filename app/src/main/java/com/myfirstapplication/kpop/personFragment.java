@@ -52,13 +52,6 @@ public class personFragment extends Fragment implements View.OnClickListener{
                 startActivity(new Intent(getActivity(),ChatActivity.class));
             }
         });
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(getActivity(),LoginActivity.class));
-            }
-        });
         return view;
     }
 
