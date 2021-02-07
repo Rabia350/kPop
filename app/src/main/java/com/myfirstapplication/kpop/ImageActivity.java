@@ -23,7 +23,6 @@ public class ImageActivity extends AppCompatActivity {
 
     ImageView imageView;
     TextView textView;
-    Button btnEdit,btnDel;
     DocumentReference reference;
     String url;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -32,8 +31,7 @@ public class ImageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image);
 
-        btnDel = findViewById(R.id.btn_del_iv);
-        btnEdit = findViewById(R.id.btn_edit_iv);
+
         imageView = findViewById(R.id.iv_expand);
         textView = findViewById(R.id.tv_name_image);
 
@@ -41,19 +39,6 @@ public class ImageActivity extends AppCompatActivity {
         String currentid = user.getUid();
 
         reference = db.collection("user").document(currentid);
-
-        btnEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-        btnDel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
     }
 
     @Override

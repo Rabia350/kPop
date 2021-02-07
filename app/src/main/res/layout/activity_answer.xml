@@ -17,7 +17,7 @@
         android:id="@+id/answer_et"
         android:background="@drawable/custom_input_question"
         android:textStyle="bold"
-        android:hint="Answer..."
+        android:hint="Type..."
         android:textColorHint="#d6d6c2"
         android:textColor="#f5f5ef"
         android:layout_margin="20dp"

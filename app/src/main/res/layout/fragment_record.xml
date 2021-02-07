@@ -17,7 +17,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginLeft="140sp"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="160dp"
+        android:layout_marginEnd="165dp"
         android:layout_marginBottom="20dp"
         android:src="@drawable/icon"
         android:layout_marginRight="160dp" />
@@ -74,7 +74,7 @@
         android:layout_below="@+id/record_timer"
         android:layout_marginStart="160dp"
         android:layout_marginTop="47dp"
-        android:background="#e6f3ff"
+        android:background="#e6e6e6"
         android:src="@drawable/recbtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -91,7 +91,7 @@
         android:layout_marginTop="47dp"
         android:layout_toEndOf="@+id/record_btn"
         android:layout_toRightOf="@+id/record_btn"
-        android:background="#e6f3ff"
+        android:background="#e6e6e6"
         android:padding="50dp"
         android:src="@drawable/listbtn"
 

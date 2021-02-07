@@ -17,12 +17,15 @@
         android:textSize="24sp"
         android:textColor="@android:color/white"/>
 
+
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:id="@+id/iv_expand"
         android:scaleType="centerCrop"
         android:layout_marginBottom="20dp"/>
+
 
     <Button
         android:layout_width="match_parent"
@@ -42,5 +45,6 @@
         android:background="#174f4f"
         android:textColor="@android:color/white"
         android:textSize="20sp"/>
+
 
 </LinearLayout>
