@@ -34,7 +34,7 @@ public class BottomTabs extends AppCompatActivity {
             }
         });
         //set button that will be select on start activity
-        bottomTabLayout.setSelectedTab(R.id.headset);
+        bottomTabLayout.setSelectedTab(R.id.person);
         //enable indicator
         bottomTabLayout.setIndicatorVisible(false);
         //indicator height
@@ -54,6 +54,9 @@ public class BottomTabs extends AppCompatActivity {
 //            case R.id.home:
 //                fragment = new homeFragment();
 //                break;
+            case R.id.person:
+                fragment =  new personFragment();
+                break;
             case R.id.headset:
                 fragment =  new headsetFragment();
                 break;
@@ -63,9 +66,7 @@ public class BottomTabs extends AppCompatActivity {
             case R.id.notification:
                 fragment =  new notificationFragment();
                 break;
-            case R.id.person:
-                fragment =  new personFragment();
-                break;
+
         }
         if (fragment != null) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

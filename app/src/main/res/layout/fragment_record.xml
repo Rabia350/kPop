@@ -74,7 +74,7 @@
         android:layout_below="@+id/record_timer"
         android:layout_marginStart="160dp"
         android:layout_marginTop="47dp"
-        android:background="@drawable/bg_rec"
+        android:background="#e6f3ff"
         android:src="@drawable/recbtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -91,7 +91,7 @@
         android:layout_marginTop="47dp"
         android:layout_toEndOf="@+id/record_btn"
         android:layout_toRightOf="@+id/record_btn"
-        android:background="@drawable/bg_list"
+        android:background="#e6f3ff"
         android:padding="50dp"
         android:src="@drawable/listbtn"
 

@@ -11,11 +11,11 @@
     tools:context=".RegisterActivity">
 
     <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginRight="150dp"
         android:layout_marginBottom="100dp"
-        android:src="@drawable/splash"
+        android:src="@drawable/ic_baseline_category_24"
         android:layout_marginLeft="150dp" />
 
 
@@ -80,8 +80,8 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#b3b3b3"
-        android:textColor="#333333"
+        android:background="#174f4f"
+        android:textColor="#e2e2d0"
         android:text="Sign in"
         android:layout_margin="10dp"
         android:id="@+id/button_register"
@@ -90,8 +90,8 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#b3b3b3"
-        android:textColor="#333333"
+        android:background="#174f4f"
+        android:textColor="#e2e2d0"
         android:text="Login"
         android:layout_margin="10dp"
         android:id="@+id/signup_to_login"

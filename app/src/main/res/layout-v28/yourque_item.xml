@@ -84,7 +84,7 @@
                     android:layout_height="wrap_content"
                     android:clickable="true"
                     android:id="@+id/delete_item_que_tv"
-                    android:textColor="#ff0000"
+                    android:textColor="@color/black"
                     android:textSize="20sp"
                     android:text="Delete "
                     android:padding="5dp"/>

@@ -4,12 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg"
     tools:context=".Fragment2">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@android:color/white"
+        app:cardBackgroundColor="#f0f5f5"
         tools:ignore="MissingConstraints">
 
         <TextView
@@ -20,7 +21,7 @@
             android:paddingLeft="20dp"
             android:text="Questions"
             android:textSize="20sp"
-            android:textColor="#ff0000"
+            android:textColor="#f5f5ef"
             android:textStyle="bold"
             android:drawableStart="@drawable/ic_baseline_keyboard_arrow_left_24"
             android:drawablePadding="5dp"

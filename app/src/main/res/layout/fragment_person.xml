@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginBottom="5dp"
-        app:cardBackgroundColor="@android:color/white">
+        app:cardBackgroundColor="#f0f5f5">
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="MY PROFILE"
-            android:textColor="#ff0000"
+            android:textColor="@color/black"
             android:layout_margin="10dp"
             android:textSize="20sp"
             android:layout_gravity="center_horizontal"
@@ -86,10 +86,11 @@
                 android:id="@+id/tv_name_f1"
                 android:layout_marginBottom="2dp"
                 android:hint="name"
+                android:textColorHint="#d6d6c2"
                 android:paddingStart="10dp"
                 android:paddingLeft="10dp"
                 android:textAlignment="viewStart"
-                android:textColor="@android:color/black"
+                android:textColor="#f5f5ef"
                 android:gravity="start"
                 android:textSize="25sp"/>
 
@@ -98,11 +99,12 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_prof_f1"
                 android:layout_marginBottom="2dp"
+                android:textColorHint="#d6d6c2"
                 android:hint="profession"
                 android:paddingStart="10dp"
                 android:paddingLeft="10dp"
                 android:textAlignment="viewStart"
-                android:textColor="@android:color/darker_gray"
+                android:textColor="#f5f5ef"
                 android:gravity="start"
                 android:textSize="15sp"/>
 
@@ -115,7 +117,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:text="PRIMARY DETAILS"
-        android:background="@android:color/darker_gray"
+        android:background="#f0f5f5"
         android:paddingStart="40dp"
         android:padding="5dp"
         android:paddingLeft="40dp"
@@ -133,7 +135,7 @@
         android:layout_marginStart="20dp"
         android:padding="5dp"
         android:layout_marginLeft="20dp"
-        android:textColor="@android:color/darker_gray"
+        android:textColor="#f5f5ef"
         android:drawablePadding="20dp"
         android:paddingStart="20dp"
         android:paddingLeft="20dp" />
@@ -147,7 +149,7 @@
         android:layout_marginStart="20dp"
         android:padding="5dp"
         android:layout_marginLeft="20dp"
-        android:textColor="@android:color/black"
+        android:textColor="#f5f5ef"
         android:drawablePadding="20dp"
         android:paddingStart="20dp"
         android:paddingLeft="20dp" />
@@ -171,7 +173,7 @@
         android:layout_marginStart="20dp"
         android:padding="5dp"
         android:layout_marginLeft="20dp"
-        android:textColor="@android:color/darker_gray"
+        android:textColor="#f5f5ef"
         android:drawablePadding="20dp"
         android:paddingStart="20dp"
         android:paddingLeft="20dp" />
@@ -185,7 +187,7 @@
         android:layout_marginStart="20dp"
         android:padding="5dp"
         android:layout_marginLeft="20dp"
-        android:textColor="@android:color/black"
+        android:textColor="#f5f5ef"
         android:drawablePadding="20dp"
         android:paddingStart="20dp"
         android:paddingLeft="20dp" />
@@ -208,7 +210,7 @@
         android:layout_marginStart="20dp"
         android:padding="5dp"
         android:layout_marginLeft="20dp"
-        android:textColor="@android:color/darker_gray"
+        android:textColor="#f5f5ef"
         android:drawablePadding="20dp"
         android:paddingStart="20dp"
         android:paddingLeft="20dp" />
@@ -223,7 +225,7 @@
         android:padding="5dp"
         android:clickable="true"
         android:layout_marginLeft="20dp"
-        android:textColor="@android:color/holo_blue_dark"
+        android:textColor="#f5f5ef"
         android:drawablePadding="20dp"
         android:paddingStart="20dp"
         android:paddingLeft="20dp" />
@@ -242,22 +244,18 @@
 
 
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Send Message"
-        android:background="@drawable/button_back"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:layout_margin="10dp"
-        android:id="@+id/btn_sendmessage_f1"/>
+
     <Button
         android:text="Chat Room"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="150dp"
         android:id="@+id/button2"
+        android:background="#174f4f"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:layout_margin="10dp"
         android:layout_marginLeft="150dp" />
 
 </LinearLayout>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@android:color/white"
+    android:background="@drawable/bg"
     tools:context=".AnswerActivity">
 
     <EditText
@@ -18,20 +18,20 @@
         android:background="@drawable/custom_input_question"
         android:textStyle="bold"
         android:hint="Answer..."
-        android:textColorHint="#ff0000"
-        android:textColor="@android:color/black"
+        android:textColorHint="#d6d6c2"
+        android:textColor="#f5f5ef"
         android:layout_margin="20dp"
         android:paddingLeft="20dp" />
 
     <Button
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Submit"
+        android:text="Send"
         android:layout_margin="20dp"
         android:id="@+id/btn_answer_submit"
-        android:background="@drawable/button_back"
+        android:background="#174f4f"
         android:layout_gravity="center"
-        android:textColor="@android:color/white"
+        android:textColor="#e2e2d0"
         android:textSize="20sp"
         android:textStyle="bold"/>
 

@@ -2,7 +2,6 @@ package com.myfirstapplication.kpop;
 
 import android.content.Context;
 import android.media.MediaPlayer;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +42,7 @@ public class CustomMusicAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup parent) {
         final ViewHolder viewHolder;
         if(convertView == null){
             viewHolder = new ViewHolder();
@@ -69,32 +68,32 @@ public class CustomMusicAdapter extends BaseAdapter {
         viewHolder.ivPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if(flag){
-//                    mediaPlayer = MediaPlayer.create(context, music.getSong());
-//                    flag = false;
-//                }
-//                if(mediaPlayer.isPlaying()) {
-//                    mediaPlayer.pause();
-//                    viewHolder.ivPlay.setImageResource(R.drawable.startt);
-//                } else {
-//                    mediaPlayer.start();
-//                    viewHolder.ivPlay.setImageResource(R.drawable.pauce);
-//                }
+                if(flag){
+                    mediaPlayer = MediaPlayer.create(context, music.getSong());
+                    flag = false;
+                }
+                if(mediaPlayer.isPlaying()) {
+                    mediaPlayer.pause();
+                    viewHolder.ivPlay.setImageResource(R.drawable.startt);
+                } else {
+                    mediaPlayer.start();
+                    viewHolder.ivPlay.setImageResource(R.drawable.pauce);
+                }
             }
         });
 
         // stop
-//        viewHolder.ivStop.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(!flag) {
-//                    mediaPlayer.stop();
-//                    mediaPlayer.release();
-//                    flag = true;
-//                }
-//                viewHolder.ivPlay.setImageResource(R.drawable.startt);
-//            }
-//        });
+        viewHolder.ivStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!flag) {
+                    mediaPlayer.stop();
+                    mediaPlayer.release();
+                    flag = true;
+                }
+                viewHolder.ivPlay.setImageResource(R.drawable.startt);
+            }
+        });
 
         return convertView;
     }

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     android:orientation="vertical"
     tools:context=".Related">
 
@@ -11,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Related List"
-        android:textColor="#ff0000"
+        android:textColor="#f5f5ef"
         android:textSize="20sp"
         android:textAlignment="center"
         android:padding="5dp"
