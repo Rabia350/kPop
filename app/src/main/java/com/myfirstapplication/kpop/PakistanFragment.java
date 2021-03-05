@@ -4,9 +4,13 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -29,6 +33,7 @@ public class PakistanFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private EditText etSearch;
 
     public PakistanFragment() {
         // Required empty public constructor
@@ -67,6 +72,7 @@ public class PakistanFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_pakistan, container, false);
         songList = view.findViewById(R.id.songList);
+        etSearch = view.findViewById(R.id.etSearch);
         arrayList = new ArrayList<>();
         arrayList.add(new Music("Jab koi bat", "Atif Aslam", R.raw.jab));
         arrayList.add(new Music("Ap baithy hain", "Zamad Baig", R.raw.ap));
@@ -77,7 +83,24 @@ public class PakistanFragment extends Fragment {
         arrayList.add(new Music("Pyar bhare do sharmile nain", "Mehdi Hassan", R.raw.pyarbare));
         arrayList.add(new Music("Akele Na Jana", "Ahmed Rushdi", R.raw.akelenajana));
         arrayList.add(new Music("Afreen Afreen", "rahat & Momina Mustehsan", R.raw.afreen));
+        // Add Text Change Listener to EditText
+        etSearch.addTextChangedListener(new TextWatcher() {
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // Call back the Adapter with current character to Filter
+                Log.e("sdsds",s.toString());
+                adapter.getFilter().filter(s.toString());
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
 
 
         adapter = new CustomMusicAdapter(getActivity(), R.layout.custom_music_item, arrayList);

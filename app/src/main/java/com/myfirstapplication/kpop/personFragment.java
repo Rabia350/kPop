@@ -119,34 +119,34 @@ public class personFragment extends Fragment implements View.OnClickListener{
         super.onStart();
 
 
-        reference.get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-
-                        if (task.getResult().exists()){
-
-                            String nameResult = task.getResult().getString("name");
-                            String bioResult = task.getResult().getString("bio");
-                            String emailResult = task.getResult().getString("email");
-                            String webResult = task.getResult().getString("web");
-                            url = task.getResult().getString("url");
-                            String profResult = task.getResult().getString("prof");
-
-                            Picasso.get().load(url).into(imageView);
-                            nameEt.setText(nameResult);
-                            bioEt.setText(bioResult);
-                            emailEt.setText(emailResult);
-                            webEt.setText(webResult);
-                            profEt.setText(profResult);
-
-
-                        }else {
-                            Intent intent = new Intent(getActivity(),CreateProfile.class);
-                            startActivity(intent);
-                        }
-                    }
-                });
+//        reference.get()
+//                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//
+//                        if (task.getResult().exists()){
+//
+//                            String nameResult = task.getResult().getString("name");
+//                            String bioResult = task.getResult().getString("bio");
+//                            String emailResult = task.getResult().getString("email");
+//                            String webResult = task.getResult().getString("web");
+//                            url = task.getResult().getString("url");
+//                            String profResult = task.getResult().getString("prof");
+//
+//                            Picasso.get().load(url).into(imageView);
+//                            nameEt.setText(nameResult);
+//                            bioEt.setText(bioResult);
+//                            emailEt.setText(emailResult);
+//                            webEt.setText(webResult);
+//                            profEt.setText(profResult);
+//
+//
+//                        }else {
+//                            Intent intent = new Intent(getActivity(),CreateProfile.class);
+//                            startActivity(intent);
+//                        }
+//                    }
+//                });
 
 
     }
