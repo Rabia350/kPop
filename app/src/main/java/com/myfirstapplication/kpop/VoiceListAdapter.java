@@ -54,7 +54,7 @@ public class VoiceListAdapter extends RecyclerView.Adapter<VoiceListAdapter.Audi
         final PopupMenu dropDownMenu = new PopupMenu(myContext, holder.btnMore);
         final Menu menu = dropDownMenu.getMenu();
         menu.add(0, 0, 0, "Delete");
-        menu.add(0, 1, 0, "Share");
+//        menu.add(0, 1, 0, "Share");
 
         dropDownMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
@@ -63,9 +63,9 @@ public class VoiceListAdapter extends RecyclerView.Adapter<VoiceListAdapter.Audi
                     case 0:
                         deleteFiles(allFiles[position].getAbsolutePath(), position);
                         return true;
-                    case 1:
-                        // item ID 1 was clicked
-                        return true;
+//                    case 1:
+//                        // item ID 1 was clicked
+//                        return true;
                 }
                 return false;
             }

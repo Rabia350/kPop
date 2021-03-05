@@ -10,12 +10,14 @@
     tools:context=".ImageActivity">
 
     <TextView
+        android:id="@+id/tv_name_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:layout_marginTop="40dp"
         android:text="Name"
-        android:id="@+id/tv_name_image"
-        android:textSize="24sp"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
 
 
 
@@ -25,26 +27,6 @@
         android:id="@+id/iv_expand"
         android:scaleType="centerCrop"
         android:layout_marginBottom="20dp"/>
-
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Edit"
-        android:id="@+id/btn_edit_iv"
-        android:background="#174f4f"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Delete Image"
-        android:layout_marginTop="10dp"
-        android:id="@+id/btn_del_iv"
-        android:background="#174f4f"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"/>
 
 
 </LinearLayout>

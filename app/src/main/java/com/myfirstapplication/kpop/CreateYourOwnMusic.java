@@ -25,9 +25,9 @@ public class CreateYourOwnMusic extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_your_own_music);
         sp = new SoundPool(2, AudioManager.STREAM_MUSIC,0);
-        sound1 = sp.load(getApplicationContext(),R.raw.sound1,1);
-        sound2 = sp.load(getApplicationContext(),R.raw.sound2,1);
-        sound3 = sp.load(getApplicationContext(),R.raw.sound3,1);
+        sound1 = sp.load(getApplicationContext(),R.raw.metal,1);
+        sound2 = sp.load(getApplicationContext(),R.raw.knocking,1);
+        sound3 = sp.load(getApplicationContext(),R.raw.dropping,1);
         sound4 = sp.load(getApplicationContext(),R.raw.hats,1);
         sound5 = sp.load(getApplicationContext(),R.raw.kick,1);
         sound6 = sp.load(getApplicationContext(),R.raw.sound6,1);

@@ -35,7 +35,6 @@
             android:layout_height="match_parent"
             android:fontFamily="sans-serif-condensed"
             android:paddingTop="16dp"
-            android:paddingLeft="17dp"
             android:paddingBottom="16dp"
             android:text="Media Player"
             android:textColor="@color/colorWhite"
@@ -51,7 +50,6 @@
             android:paddingTop="16dp"
             android:paddingBottom="16dp"
             android:text="Not Playing"
-            android:textAlignment="viewEnd"
             android:textColor="@color/colorWhite"
             android:textSize="18dp" />
     </LinearLayout>
@@ -76,8 +74,8 @@
     <ImageButton
         android:id="@+id/player_play_btn"
         android:background="#004d4d"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
         android:padding="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -88,33 +86,6 @@
         tools:layout_editor_absoluteX="184dp"
         tools:layout_editor_absoluteY="190dp" />
 
-    <ImageButton
-        android:id="@+id/imageView4"
-        android:background="#004d4d"
-        android:layout_width="123dp"
-        android:layout_height="42dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/player_play_btn"
-        app:layout_constraintTop_toTopOf="@id/player_play_btn"
-        app:layout_constraintBottom_toBottomOf="@id/player_play_btn"
-        app:srcCompat="@android:drawable/ic_media_rew"
-        tools:layout_editor_absoluteY="206dp" />
-
-    <ImageButton
-        android:id="@+id/imageView5"
-        android:background="#004d4d"
-        android:layout_width="117dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintBottom_toBottomOf="@id/player_play_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/player_play_btn"
-        app:layout_constraintStart_toEndOf="@id/player_play_btn"
-        app:srcCompat="@android:drawable/ic_media_ff"
-        tools:layout_editor_absoluteY="206dp" />
 
     <SeekBar
         android:id="@+id/player_seekbar"
