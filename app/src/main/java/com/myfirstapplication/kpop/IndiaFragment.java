@@ -4,9 +4,13 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -17,6 +21,44 @@ public class IndiaFragment extends Fragment {
     private ArrayList<Music> arrayList;
     private CustomMusicAdapter adapter;
     private ListView songList;
+<<<<<<< HEAD
+=======
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+    private String mParam2;
+    private EditText etSearch;
+
+    public IndiaFragment() {
+        // Required empty public constructor
+    }
+
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param param1 Parameter 1.
+     * @param param2 Parameter 2.
+     * @return A new instance of fragment IndiaFragment.
+     */
+    // TODO: Rename and change types and number of parameters
+    public static IndiaFragment newInstance(String param1, String param2) {
+        IndiaFragment fragment = new IndiaFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+    }
+>>>>>>> f8a7504c314027e184c1ad221b2d9c8f2249ecf5
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -24,6 +66,7 @@ public class IndiaFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_india, container, false);
         songList = view.findViewById(R.id.songList);
+        etSearch = view.findViewById(R.id.etSearch);
         arrayList = new ArrayList<>();
         arrayList.add(new Music("Lag Jaa Gale", "Lata Mangeshkar", R.raw.lagjagaly));
         arrayList.add(new Music("Phir Bhi Tumko Chahunga", "Zamad Baig", R.raw.phirb));
@@ -31,6 +74,25 @@ public class IndiaFragment extends Fragment {
         arrayList.add(new Music("Jo Tu Mera Humdard Hai", "Arijit Singh", R.raw.hamdard));
         arrayList.add(new Music("Zara zara behekta hai", "ADITYA BHARDWAJ", R.raw.zarazara));
         arrayList.add(new Music("ye jism hai to kya", "Ali Azmat", R.raw.yejism));
+
+        // Add Text Change Listener to EditText
+        etSearch.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // Call back the Adapter with current character to Filter
+                Log.e("sdsds",s.toString());
+                adapter.getFilter().filter(s.toString());
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
 
 
         adapter = new CustomMusicAdapter(getActivity(), R.layout.custom_music_item, arrayList);

@@ -11,6 +11,12 @@
         android:background="@drawable/bg"
         android:layout_height = "match_parent"
         android:orientation = "vertical">
+        <EditText
+            android:id="@+id/etSearch"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:hint="Search Song Here"
+            />
 
         <ListView
             android:id = "@+id/songList"

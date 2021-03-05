@@ -1,9 +1,9 @@
 package com.myfirstapplication.kpop;
 
 public class Music {
-    private String name;
-    private String singer;
-    private int song;
+    public String name;
+    public String singer;
+    public int song;
 
     public Music(String name, String singer, int song) {
         this.name = name;
